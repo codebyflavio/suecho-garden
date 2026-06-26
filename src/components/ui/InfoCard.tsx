@@ -38,7 +38,7 @@ const InfoCard: React.FC<InfoCardProps> = memo(
           {title}
         </h3>
         <p
-          className="text-xs md:text-sm text-rose-500/65 font-light leading-relaxed"
+          className="text-xs md:text-sm text-rose-700/75 font-light leading-relaxed"
           style={{ letterSpacing: '0.06em' }}
         >
           {description}

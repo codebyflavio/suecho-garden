@@ -107,7 +107,7 @@ const SeasonCard: React.FC<{ season: Season; index: number }> = memo(({ season, 
 
       <p
         className="text-xs sm:text-sm leading-relaxed"
-        style={{ color: '#8b6570', letterSpacing: '0.06em', fontWeight: 300 }}
+        style={{ color: '#6b3d4e', letterSpacing: '0.06em', fontWeight: 300 }}
       >
         {season.detail}
       </p>
@@ -130,13 +130,13 @@ const SeasonsSection: React.FC = memo(() => (
         className="text-center mb-10 sm:mb-16"
       >
         <h2
-          className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-rose-800/70"
+          className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-rose-800/90"
           style={{ letterSpacing: '0.2em' }}
         >
           四季与你
         </h2>
         <p
-          className="mt-2 sm:mt-3 text-rose-500/60 text-xs sm:text-sm font-serif"
+          className="mt-2 sm:mt-3 text-rose-700/75 text-xs sm:text-sm font-serif"
           style={{ letterSpacing: '0.15em' }}
         >
           每一个季节，都有一个理由想着你

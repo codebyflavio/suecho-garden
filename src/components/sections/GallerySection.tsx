@@ -72,11 +72,11 @@ const FlowerImage: React.FC<FlowerImageProps> = memo(({ flower, revealed }) => {
             <p className="text-white/90 text-xl sm:text-2xl font-serif" style={{ letterSpacing: '0.15em' }}>
               {flower.chineseName}
             </p>
-            <p className="text-white/50 text-xs mt-0.5" style={{ letterSpacing: '0.2em' }}>
+            <p className="text-white/80 text-xs mt-0.5" style={{ letterSpacing: '0.2em' }}>
               {flower.latinName}
             </p>
           </div>
-          <p className="text-white/60 text-xs font-serif text-right" style={{ letterSpacing: '0.1em' }}>
+          <p className="text-white/85 text-xs font-serif text-right" style={{ letterSpacing: '0.1em' }}>
             {flower.meaning}
           </p>
         </div>
@@ -161,13 +161,13 @@ const GallerySection: React.FC = memo(() => (
         className="text-center mb-10 sm:mb-16"
       >
         <h2
-          className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-rose-800/70"
+          className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-rose-800/90"
           style={{ letterSpacing: '0.2em' }}
         >
           花园深处
         </h2>
         <p
-          className="mt-2 sm:mt-3 text-rose-500/60 text-xs sm:text-sm font-serif"
+          className="mt-2 sm:mt-3 text-rose-700/75 text-xs sm:text-sm font-serif"
           style={{ letterSpacing: '0.15em' }}
         >
           每朵花都有它想说的话
@@ -186,7 +186,7 @@ const GallerySection: React.FC = memo(() => (
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="text-center mt-8 sm:mt-12 text-rose-400/55 text-xs sm:text-sm font-serif"
+        className="text-center mt-8 sm:mt-12 text-rose-600/75 text-xs sm:text-sm font-serif"
         style={{ letterSpacing: '0.18em' }}
       >
         触碰花朵，听它诉说

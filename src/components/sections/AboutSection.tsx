@@ -38,7 +38,7 @@ const AboutSection: React.FC = memo(() => (
         className="flex items-center gap-4 mb-10 sm:mb-14"
       >
         <span className="block h-px flex-1 bg-rose-200/70" />
-        <span className="text-rose-300/80 text-xs sm:text-sm font-serif tracking-[0.3em]">致亲爱的苏秋</span>
+        <span className="text-rose-600/80 text-xs sm:text-sm font-serif tracking-[0.3em]">致亲爱的苏秋</span>
         <span className="block h-px flex-1 bg-rose-200/70" />
       </motion.div>
 
@@ -71,7 +71,7 @@ const AboutSection: React.FC = memo(() => (
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
-              className="font-serif text-rose-700/75"
+              className="font-serif text-rose-800/85"
               style={{
                 fontSize: line === '苏秋——' ? 'clamp(1.4rem, 5vw, 2rem)' : 'clamp(0.95rem, 3vw, 1.15rem)',
                 letterSpacing: '0.2em',

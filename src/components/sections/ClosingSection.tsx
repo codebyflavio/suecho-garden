@@ -113,7 +113,7 @@ const ClosingSection: React.FC = memo(() => (
             style={{
               fontSize: 'clamp(0.8rem, 3.5vw, 1rem)',
               letterSpacing: '0.15em',
-              color: 'rgba(255,220,210,0.65)',
+              color: 'rgba(255,220,210,0.88)',
             }}
           >
             {line}
@@ -138,7 +138,7 @@ const ClosingSection: React.FC = memo(() => (
         </motion.span>
         <p
           className="font-serif text-xs"
-          style={{ color: 'rgba(255,182,193,0.45)', letterSpacing: '0.25em' }}
+          style={{ color: 'rgba(255,182,193,0.75)', letterSpacing: '0.25em' }}
         >
           苏秋的秘密花园
         </p>

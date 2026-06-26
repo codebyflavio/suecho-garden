@@ -37,7 +37,7 @@ const LetterSection: React.FC = memo(() => (
         className="flex items-center gap-4 mb-10 sm:mb-14"
       >
         <span className="block h-px flex-1 bg-rose-200/60" />
-        <span className="text-rose-300/75 text-xs sm:text-sm font-serif tracking-[0.3em]">写给你的信</span>
+        <span className="text-rose-600/80 text-xs sm:text-sm font-serif tracking-[0.3em]">写给你的信</span>
         <span className="block h-px flex-1 bg-rose-200/60" />
       </motion.div>
 
@@ -47,7 +47,7 @@ const LetterSection: React.FC = memo(() => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ type: 'spring', stiffness: 55, damping: 18 }}
-        className="font-serif text-rose-700/65 mb-6 sm:mb-8"
+        className="font-serif text-rose-700/85 mb-6 sm:mb-8"
         style={{ fontSize: 'clamp(0.9rem, 3vw, 1.05rem)', letterSpacing: '0.12em' }}
       >
         亲爱的苏秋，
@@ -63,7 +63,7 @@ const LetterSection: React.FC = memo(() => (
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
-            className="font-serif leading-loose sm:leading-[2] text-rose-800/65"
+            className="font-serif leading-loose sm:leading-[2] text-rose-800/85"
             style={{ fontSize: 'clamp(0.875rem, 2.5vw, 1rem)', letterSpacing: '0.08em' }}
           >
             {para}
@@ -100,7 +100,7 @@ const LetterSection: React.FC = memo(() => (
         className="mt-10 sm:mt-12 flex flex-col items-end gap-1"
       >
         <p
-          className="font-serif text-rose-500/55 text-xs sm:text-sm"
+          className="font-serif text-rose-700/80 text-xs sm:text-sm"
           style={{ letterSpacing: '0.15em' }}
         >
           永远爱你的人

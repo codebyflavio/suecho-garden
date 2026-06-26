@@ -17,13 +17,13 @@ const ScrollArrow: React.FC = memo(() => (
     transition={{ delay: 5.5, duration: 1 }}
     className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 pointer-events-none z-30"
   >
-    <p className="text-rose-400/50 text-xs font-serif" style={{ letterSpacing: '0.18em' }}>
+    <p className="text-rose-600/70 text-xs font-serif" style={{ letterSpacing: '0.18em' }}>
       向下探索
     </p>
     <motion.div
       animate={{ y: [0, 6, 0] }}
       transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-      className="text-rose-300/50 text-lg"
+      className="text-rose-500/70 text-lg"
     >
       ↓
     </motion.div>
