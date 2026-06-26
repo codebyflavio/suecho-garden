@@ -25,7 +25,7 @@ const POEM_LINES = [
 const AboutSection: React.FC = memo(() => (
   <section
     id="about-section"
-    className="relative z-30 py-28 px-6"
+    className="relative z-30 py-16 sm:py-24 md:py-28 px-6"
     style={{ background: 'rgba(255,249,240,0.92)', backdropFilter: 'blur(22px)' }}
   >
     <div className="max-w-3xl mx-auto">
@@ -35,10 +35,10 @@ const AboutSection: React.FC = memo(() => (
         whileInView={{ opacity: 1, scaleX: 1 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="flex items-center gap-4 mb-14"
+        className="flex items-center gap-4 mb-10 sm:mb-14"
       >
         <span className="block h-px flex-1 bg-rose-200/70" />
-        <span className="text-rose-300/80 text-sm font-serif tracking-[0.3em]">致亲爱的苏秋</span>
+        <span className="text-rose-300/80 text-xs sm:text-sm font-serif tracking-[0.3em]">致亲爱的苏秋</span>
         <span className="block h-px flex-1 bg-rose-200/70" />
       </motion.div>
 
@@ -48,21 +48,21 @@ const AboutSection: React.FC = memo(() => (
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ type: 'spring', stiffness: 60, damping: 20 }}
-        className="text-center mb-16"
+        className="text-center mb-10 sm:mb-16"
       >
         <span
-          className="text-[120px] md:text-[160px] font-serif text-rose-200/60 leading-none select-none"
-          style={{ fontWeight: 300, letterSpacing: '-0.02em' }}
+          className="font-serif text-rose-200/60 leading-none select-none"
+          style={{ fontSize: 'clamp(80px, 20vw, 160px)', fontWeight: 300 }}
         >
           秋
         </span>
       </motion.div>
 
       {/* Poem */}
-      <div className="flex flex-col items-center gap-3 text-center">
+      <div className="flex flex-col items-center gap-2 sm:gap-3 text-center">
         {POEM_LINES.map((line, i) =>
           line === '' ? (
-            <div key={i} className="h-3" />
+            <div key={i} className="h-2 sm:h-3" />
           ) : (
             <motion.p
               key={i}
@@ -73,9 +73,9 @@ const AboutSection: React.FC = memo(() => (
               viewport={{ once: true, margin: '-60px' }}
               className="font-serif text-rose-700/75"
               style={{
-                fontSize: line === '苏秋——' ? '2rem' : '1.15rem',
+                fontSize: line === '苏秋——' ? 'clamp(1.4rem, 5vw, 2rem)' : 'clamp(0.95rem, 3vw, 1.15rem)',
                 letterSpacing: '0.2em',
-                fontWeight: line === '苏秋——' ? 300 : 300,
+                fontWeight: 300,
               }}
             >
               {line}
@@ -90,7 +90,7 @@ const AboutSection: React.FC = memo(() => (
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 1.2 }}
-        className="flex justify-center gap-6 mt-16 text-rose-300/50 text-2xl"
+        className="flex justify-center gap-4 sm:gap-6 mt-10 sm:mt-16 text-rose-300/50 text-xl sm:text-2xl"
       >
         {['✿', '❀', '✾', '❀', '✿'].map((f, i) => (
           <motion.span

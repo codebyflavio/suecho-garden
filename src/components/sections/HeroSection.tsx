@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import HeroTitle from '../ui/HeroTitle'
 import FlowerButton from '../ui/FlowerButton'
@@ -15,7 +15,7 @@ const ScrollArrow: React.FC = memo(() => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 5.5, duration: 1 }}
-    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 pointer-events-none z-30"
+    className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 pointer-events-none z-30"
   >
     <p className="text-rose-400/50 text-xs font-serif" style={{ letterSpacing: '0.18em' }}>
       向下探索
@@ -31,41 +31,44 @@ const ScrollArrow: React.FC = memo(() => (
 ))
 ScrollArrow.displayName = 'ScrollArrow'
 
-const HeroSection: React.FC = memo(() => (
-  <section className="relative min-h-screen flex flex-col items-center justify-center gap-7 px-4 py-16">
-    <HeroTitle />
+const HeroSection: React.FC = memo(() => {
+  const scrollToAbout = useCallback(() => {
+    document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
 
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 3.2, duration: 1.2 }}
-    >
-      <FlowerButton onClick={() => {
-        const next = document.getElementById('about-section')
-        next?.scrollIntoView({ behavior: 'smooth' })
-      }} />
-    </motion.div>
+  return (
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center gap-4 sm:gap-7 px-4 py-12 sm:py-16">
+      <HeroTitle />
 
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 3.8, duration: 1 }}
-      className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl w-full"
-    >
-      {INFO_CARDS.map((card, i) => (
-        <InfoCard
-          key={card.title}
-          icon={card.icon}
-          title={card.title}
-          description={card.description}
-          delay={3.8 + i * 0.18}
-        />
-      ))}
-    </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3.2, duration: 1.2 }}
+      >
+        <FlowerButton onClick={scrollToAbout} />
+      </motion.div>
 
-    <ScrollArrow />
-  </section>
-))
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 3.8, duration: 1 }}
+        className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 max-w-xl w-full"
+      >
+        {INFO_CARDS.map((card, i) => (
+          <InfoCard
+            key={card.title}
+            icon={card.icon}
+            title={card.title}
+            description={card.description}
+            delay={3.8 + i * 0.18}
+          />
+        ))}
+      </motion.div>
+
+      <ScrollArrow />
+    </section>
+  )
+})
 
 HeroSection.displayName = 'HeroSection'
 

@@ -2,6 +2,7 @@ import React, { Suspense, memo, useState, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 
+import { useMobile } from '../hooks/useMobile'
 import FlowerField from './3d/FlowerField'
 import SunRays from './3d/SunRays'
 import ParticleSystem from './effects/ParticleSystem'
@@ -23,7 +24,7 @@ const BG_IMAGES = [
 const ThreeScene: React.FC = memo(() => (
   <Canvas
     camera={{ position: [0, 3, 13], fov: 58 }}
-    gl={{ antialias: true, alpha: true }}
+    gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
     style={{ width: '100%', height: '100%' }}
   >
     <ambientLight intensity={0.65} color="#fff4ef" />
@@ -70,42 +71,51 @@ const BackgroundImage: React.FC = memo(() => {
 })
 BackgroundImage.displayName = 'BackgroundImage'
 
-const GardenScene: React.FC = memo(() => (
-  <div className="relative w-full">
-    {/* ── Fixed background: always visible while scrolling ── */}
-    <div className="fixed inset-0 z-0 bg-gradient-to-br from-soft-pink via-spring-yellow to-fresh-green">
-      <BackgroundImage />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(135deg, rgba(255,228,225,0.55) 0%, rgba(255,249,230,0.45) 45%, rgba(232,245,233,0.42) 100%)',
-        }}
+const GardenScene: React.FC = memo(() => {
+  const isMobile = useMobile()
+
+  return (
+    <div className="relative w-full">
+      {/* Fixed background */}
+      <div className="fixed inset-0 z-0 bg-gradient-to-br from-soft-pink via-spring-yellow to-fresh-green">
+        <BackgroundImage />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(255,228,225,0.55) 0%, rgba(255,249,230,0.45) 45%, rgba(232,245,233,0.42) 100%)',
+          }}
+        />
+      </div>
+
+      {/* Three.js flower field — desktop only (WebGL is heavy on mobile) */}
+      {!isMobile && (
+        <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.26 }}>
+          <ThreeScene />
+        </div>
+      )}
+
+      {/* Particles — fewer on mobile to preserve battery */}
+      <ParticleSystem
+        petalCount={isMobile ? 28 : 65}
+        sparkleCount={isMobile ? 8 : 22}
       />
+
+      {/* Butterflies */}
+      <ButterflyPath />
+
+      {/* Scrollable page */}
+      <div className="relative z-30">
+        <HeroSection />
+        <AboutSection />
+        <SeasonsSection />
+        <GallerySection />
+        <LetterSection />
+        <ClosingSection />
+      </div>
     </div>
-
-    {/* ── Fixed Three.js flower field ── */}
-    <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.26 }}>
-      <ThreeScene />
-    </div>
-
-    {/* ── Fixed particle petals + sparkles ── */}
-    <ParticleSystem petalCount={65} sparkleCount={22} />
-
-    {/* ── Fixed butterflies ── */}
-    <ButterflyPath />
-
-    {/* ── Scrollable page content ── */}
-    <div className="relative z-30">
-      <HeroSection />
-      <AboutSection />
-      <SeasonsSection />
-      <GallerySection />
-      <LetterSection />
-      <ClosingSection />
-    </div>
-  </div>
-))
+  )
+})
 
 GardenScene.displayName = 'GardenScene'
 

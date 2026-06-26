@@ -23,48 +23,49 @@ const HeroTitle: React.FC = memo(() => (
     variants={container}
     initial="hidden"
     animate="visible"
-    className="relative z-30 flex flex-col items-center text-center px-6 pointer-events-none"
+    className="relative z-30 flex flex-col items-center text-center px-4 pointer-events-none w-full"
   >
+    {/* Main title — 7 CJK chars: text-3xl safe on 320px, scales up on larger screens */}
     <motion.h1
       variants={item}
-      className="text-5xl md:text-7xl font-serif font-light text-rose-800/75 drop-shadow-md"
-      style={{ letterSpacing: '0.18em', textShadow: '0 2px 24px rgba(255,170,180,0.45)' }}
+      className="text-3xl sm:text-5xl md:text-7xl font-serif font-light text-rose-800/75 drop-shadow-md w-full"
+      style={{ letterSpacing: '0.15em', textShadow: '0 2px 24px rgba(255,170,180,0.45)' }}
     >
       苏秋的秘密花园
     </motion.h1>
 
-    <motion.div variants={item} className="mt-4 flex items-center gap-4">
-      <span className="block w-16 h-px bg-rose-300/55" />
+    <motion.div variants={item} className="mt-3 flex items-center gap-3">
+      <span className="block w-10 sm:w-16 h-px bg-rose-300/55" />
       <motion.span
-        className="text-rose-300/80 text-lg"
+        className="text-rose-300/80 text-base"
         animate={{ rotate: [0, 15, 0, -10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       >
         ✿
       </motion.span>
-      <span className="block w-16 h-px bg-rose-300/55" />
+      <span className="block w-10 sm:w-16 h-px bg-rose-300/55" />
     </motion.div>
 
     <motion.p
       variants={item}
-      className="mt-4 text-xl md:text-2xl font-serif text-rose-600/65"
-      style={{ letterSpacing: '0.22em' }}
+      className="mt-3 text-base sm:text-xl md:text-2xl font-serif text-rose-600/65"
+      style={{ letterSpacing: '0.18em' }}
     >
       春日暖阳，万物温柔
     </motion.p>
 
     <motion.p
       variants={item}
-      className="mt-5 text-base md:text-lg text-rose-700/55 font-light"
-      style={{ letterSpacing: '0.1em' }}
+      className="mt-4 text-sm sm:text-base md:text-lg text-rose-700/55 font-light px-2"
+      style={{ letterSpacing: '0.08em' }}
     >
       欢迎你，亲爱的。这里藏着一整个春天。
     </motion.p>
 
     <motion.p
       variants={item}
-      className="mt-2 text-sm md:text-base text-rose-400/50 italic"
-      style={{ letterSpacing: '0.08em' }}
+      className="mt-2 text-xs sm:text-sm md:text-base text-rose-400/50 italic px-2"
+      style={{ letterSpacing: '0.06em' }}
     >
       轻轻触碰，花儿就会为你绽放。
     </motion.p>

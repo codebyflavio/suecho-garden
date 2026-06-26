@@ -61,7 +61,7 @@ const SeasonCard: React.FC<{ season: Season; index: number }> = memo(({ season, 
     whileInView={{ opacity: 1, y: 0, scale: 1 }}
     viewport={{ once: true, margin: '-60px' }}
     transition={{ type: 'spring', stiffness: 55, damping: 18, delay: index * 0.12 }}
-    whileHover={{ y: -8, scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
     className="relative rounded-3xl overflow-hidden cursor-default"
     style={{
       background: `linear-gradient(145deg, ${season.from}, ${season.to})`,
@@ -70,19 +70,17 @@ const SeasonCard: React.FC<{ season: Season; index: number }> = memo(({ season, 
       boxShadow: '0 8px 32px rgba(0,0,0,0.06)',
     }}
   >
-    <div className="p-7 flex flex-col gap-4">
-      {/* Large kanji */}
+    <div className="p-5 sm:p-7 flex flex-col gap-3 sm:gap-4">
       <div className="flex items-start justify-between">
         <span
-          className="text-7xl font-serif leading-none"
+          className="text-6xl sm:text-7xl font-serif leading-none"
           style={{ color: season.accent, opacity: 0.18, fontWeight: 300 }}
         >
           {season.kanji}
         </span>
-        <span className="text-3xl">{season.icon}</span>
+        <span className="text-2xl sm:text-3xl">{season.icon}</span>
       </div>
 
-      {/* Season name */}
       <div>
         <p
           className="text-xs font-serif tracking-[0.3em] mb-1"
@@ -90,7 +88,6 @@ const SeasonCard: React.FC<{ season: Season; index: number }> = memo(({ season, 
         >
           {season.name}
         </p>
-        {/* Accent line */}
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -101,17 +98,15 @@ const SeasonCard: React.FC<{ season: Season; index: number }> = memo(({ season, 
         />
       </div>
 
-      {/* Poem */}
       <p
-        className="text-base font-serif leading-relaxed"
+        className="text-sm sm:text-base font-serif leading-relaxed"
         style={{ color: '#5a3e4b', letterSpacing: '0.1em' }}
       >
         {season.poem}
       </p>
 
-      {/* Detail */}
       <p
-        className="text-sm leading-relaxed"
+        className="text-xs sm:text-sm leading-relaxed"
         style={{ color: '#8b6570', letterSpacing: '0.06em', fontWeight: 300 }}
       >
         {season.detail}
@@ -123,34 +118,32 @@ SeasonCard.displayName = 'SeasonCard'
 
 const SeasonsSection: React.FC = memo(() => (
   <section
-    className="relative z-30 py-28 px-6"
+    className="relative z-30 py-16 sm:py-24 md:py-28 px-4 sm:px-6"
     style={{ background: 'rgba(255,248,240,0.94)', backdropFilter: 'blur(22px)' }}
   >
     <div className="max-w-4xl mx-auto">
-      {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ type: 'spring', stiffness: 55, damping: 18 }}
-        className="text-center mb-16"
+        className="text-center mb-10 sm:mb-16"
       >
         <h2
-          className="text-4xl md:text-5xl font-serif font-light text-rose-800/70"
+          className="text-3xl sm:text-4xl md:text-5xl font-serif font-light text-rose-800/70"
           style={{ letterSpacing: '0.2em' }}
         >
           四季与你
         </h2>
         <p
-          className="mt-3 text-rose-500/60 text-sm font-serif"
-          style={{ letterSpacing: '0.2em' }}
+          className="mt-2 sm:mt-3 text-rose-500/60 text-xs sm:text-sm font-serif"
+          style={{ letterSpacing: '0.15em' }}
         >
           每一个季节，都有一个理由想着你
         </p>
       </motion.div>
 
-      {/* Season grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
         {SEASONS.map((season, i) => (
           <SeasonCard key={season.kanji} season={season} index={i} />
         ))}
