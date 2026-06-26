@@ -1,0 +1,76 @@
+import React, { memo } from 'react'
+import { motion } from 'framer-motion'
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.35, delayChildren: 0.6 },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring' as const, stiffness: 55, damping: 18 },
+  },
+}
+
+const HeroTitle: React.FC = memo(() => (
+  <motion.div
+    variants={container}
+    initial="hidden"
+    animate="visible"
+    className="relative z-30 flex flex-col items-center text-center px-6 pointer-events-none"
+  >
+    <motion.h1
+      variants={item}
+      className="text-5xl md:text-7xl font-serif font-light text-rose-800/75 drop-shadow-md"
+      style={{ letterSpacing: '0.18em', textShadow: '0 2px 24px rgba(255,170,180,0.45)' }}
+    >
+      苏秋的秘密花园
+    </motion.h1>
+
+    <motion.div variants={item} className="mt-4 flex items-center gap-4">
+      <span className="block w-16 h-px bg-rose-300/55" />
+      <motion.span
+        className="text-rose-300/80 text-lg"
+        animate={{ rotate: [0, 15, 0, -10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        ✿
+      </motion.span>
+      <span className="block w-16 h-px bg-rose-300/55" />
+    </motion.div>
+
+    <motion.p
+      variants={item}
+      className="mt-4 text-xl md:text-2xl font-serif text-rose-600/65"
+      style={{ letterSpacing: '0.22em' }}
+    >
+      春日暖阳，万物温柔
+    </motion.p>
+
+    <motion.p
+      variants={item}
+      className="mt-5 text-base md:text-lg text-rose-700/55 font-light"
+      style={{ letterSpacing: '0.1em' }}
+    >
+      欢迎你，亲爱的。这里藏着一整个春天。
+    </motion.p>
+
+    <motion.p
+      variants={item}
+      className="mt-2 text-sm md:text-base text-rose-400/50 italic"
+      style={{ letterSpacing: '0.08em' }}
+    >
+      轻轻触碰，花儿就会为你绽放。
+    </motion.p>
+  </motion.div>
+))
+
+HeroTitle.displayName = 'HeroTitle'
+
+export default HeroTitle
